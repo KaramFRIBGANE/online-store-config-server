@@ -16,3 +16,29 @@ info:
  stage: step19-solution
  topic: config server
  version: 1.1
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    statusPageUrlPath: ${management.context-path}/info
+    healthCheckUrlPath: ${management.context-path}/health
+    instanceId: ${spring.application.name}:${vcap.application.instance_id:${spring.application.instance_id:${random.value}}}
+    metadata-map:
+      management.context-path: /admin
+
+management:
+  context-path: /admin
+
+feign.hystrix.enabled: true
+#hystrix.shareSecurityContext: true
+#hystrix.command.default.execution.isolation.thread.timoutInMilliseconds: 10000
+
+security:
+  basic:
+    enabled: false
+
+stock-service.name: stock-service
+sales-service.name: sales-service
+product-service.name: product-service
