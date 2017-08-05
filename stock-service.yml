@@ -13,6 +13,11 @@ eureka:
     healthCheckUrlPath: ${management.contextPath}/health
     instanceId: ${spring.application.name}:${vcap.application.instance_id:${spring.application.instance_id:${random.value}}}
 
+
+feign.hystrix.enabled: true
+#hystrix.shareSecurityContext: true
+#hystrix.command.default.execution.isolation.thread.timoutInMilliseconds: 10000
+
 swagger:
   enabled: true
   contact-email: guenoun.y@sfeir.com
